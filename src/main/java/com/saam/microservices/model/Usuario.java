@@ -21,10 +21,8 @@ public class Usuario {
 	@JsonView(Basico.class)
 	private Long id;
 
-	@JsonView(Basico.class)
 	private String username;
 
-	@JsonView(Basico.class)
 	private String password;
 
 	@JsonView(Basico.class)

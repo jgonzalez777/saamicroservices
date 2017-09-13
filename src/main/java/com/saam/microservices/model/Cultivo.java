@@ -38,10 +38,10 @@ public class Cultivo {
 	private Set<Estadistica> estadisticas = new HashSet<Estadistica>(0);
 
 	@JsonView(Sensores.class)
-	private Set<CatalogoSensor> catalogoSensors = new HashSet<CatalogoSensor>(0);
+	private Set<CatalogoSensor> catalogoSensores = new HashSet<CatalogoSensor>(0);
 
 	@JsonView(Actuadores.class)
-	private Set<CatalogoActuador> catalogoActuadors = new HashSet<CatalogoActuador>(0);
+	private Set<CatalogoActuador> catalogoActuadores = new HashSet<CatalogoActuador>(0);
 
 	public Cultivo() {
 	}
@@ -52,12 +52,12 @@ public class Cultivo {
 	}
 
 	public Cultivo(TipoCultivo tipoCultivo, Estacion estacion, Set<Estadistica> estadisticas,
-			Set<CatalogoSensor> catalogoSensors, Set<CatalogoActuador> catalogoActuadors) {
+			Set<CatalogoSensor> catalogoSensores, Set<CatalogoActuador> catalogoActuadores) {
 		this.tipoCultivo = tipoCultivo;
 		this.estacion = estacion;
 		this.estadisticas = estadisticas;
-		this.catalogoSensors = catalogoSensors;
-		this.catalogoActuadors = catalogoActuadors;
+		this.catalogoSensores = catalogoSensores;
+		this.catalogoActuadores = catalogoActuadores;
 	}
 
 	@Id
@@ -105,23 +105,23 @@ public class Cultivo {
 	@JoinTable(name = "rel_cultivo_sensor", catalog = "smart_crop", joinColumns = {
 			@JoinColumn(name = "cultivo_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "sensor_id", nullable = false, updatable = false) })
-	public Set<CatalogoSensor> getCatalogoSensors() {
-		return this.catalogoSensors;
+	public Set<CatalogoSensor> getCatalogoSensores() {
+		return this.catalogoSensores;
 	}
 
-	public void setCatalogoSensors(Set<CatalogoSensor> catalogoSensors) {
-		this.catalogoSensors = catalogoSensors;
+	public void setCatalogoSensores(Set<CatalogoSensor> catalogoSensores) {
+		this.catalogoSensores = catalogoSensores;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "rel_cultivo_actuador", catalog = "smart_crop", joinColumns = {
 			@JoinColumn(name = "cultivo_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "actuador_id", nullable = false, updatable = false) })
-	public Set<CatalogoActuador> getCatalogoActuadors() {
-		return this.catalogoActuadors;
+	public Set<CatalogoActuador> getCatalogoActuadores() {
+		return this.catalogoActuadores;
 	}
 
-	public void setCatalogoActuadors(Set<CatalogoActuador> catalogoActuadors) {
-		this.catalogoActuadors = catalogoActuadors;
+	public void setCatalogoActuadores(Set<CatalogoActuador> catalogoActuadores) {
+		this.catalogoActuadores = catalogoActuadores;
 	}
 }

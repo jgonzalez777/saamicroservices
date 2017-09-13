@@ -19,13 +19,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "estacion", catalog = "smart_crop")
 public class Estacion {
 
-	public interface Basico{}
-	public interface Usuarios{}
+	public interface Basico{}	
+	public interface Cultivos{}
 	
 	@JsonView(Basico.class)
 	private Long id;
-	
-	@JsonView(Usuarios.class)
+		
 	private Usuario usuario;
 
 	@JsonView(Basico.class)
@@ -40,8 +39,8 @@ public class Estacion {
 	@JsonView(Basico.class)
 	private float longitud;
 	
+	@JsonView(Cultivos.class)
 	private Set<Cultivo> cultivos = new HashSet<Cultivo>(0);		
-	
 	
 	private Set<Estadistica> estadisticas = new HashSet<Estadistica>(0);
 

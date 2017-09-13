@@ -7,13 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.saam.microservices.model.CatalogoActuador;
+import com.saam.microservices.model.CatalogoSensor;
+import com.saam.microservices.model.Cultivo;
 import com.saam.microservices.model.Estacion;
-import com.saam.microservices.model.Usuario;
+import com.saam.microservices.model.TipoCultivo;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
-@RequestMapping("/estaciones")
+@RequestMapping("/estacion")
 public class EstacionController {
 	
 	@Autowired
@@ -25,7 +28,7 @@ public class EstacionController {
 		return estaciones;
 	}
 	
-	interface EstacionDetalle extends Estacion.Basico, Estacion.Usuarios, Usuario.Basico{}
+	interface EstacionDetalle extends Estacion.Basico, Estacion.Cultivos, Cultivo.Basicos, Cultivo.TiposCultivo, TipoCultivo.Basicos, Cultivo.Sensores ,CatalogoSensor.Basico, Cultivo.Actuadores, CatalogoActuador.Basico{}
 	@JsonView(EstacionDetalle.class)
 	@RequestMapping(value= "/{id}", method = RequestMethod.GET)
 	public Estacion estacion(@PathVariable long id){
