@@ -40,9 +40,7 @@ public class Estacion {
 	private float longitud;
 	
 	@JsonView(Cultivos.class)
-	private Set<Cultivo> cultivos = new HashSet<Cultivo>(0);		
-	
-	private Set<Estadistica> estadisticas = new HashSet<Estadistica>(0);
+	private Set<Cultivo> cultivos = new HashSet<Cultivo>(0);	
 
 	public Estacion() {
 	}	
@@ -55,15 +53,13 @@ public class Estacion {
 		this.longitud = longitud;
 	}
 
-	public Estacion(Usuario usuario, String ip, String nombre, float latitud, float longitud, Set<Cultivo> cultivos,
-			 Set<Estadistica> estadisticas) {
+	public Estacion(Usuario usuario, String ip, String nombre, float latitud, float longitud, Set<Cultivo> cultivos) {
 		this.usuario = usuario;
 		this.ip = ip;
 		this.nombre = nombre;
 		this.latitud = latitud;
 		this.longitud = longitud;
 		this.cultivos = cultivos;		
-		this.estadisticas = estadisticas;
 	}
 
 	@Id
@@ -132,14 +128,5 @@ public class Estacion {
 	public void setCultivos(Set<Cultivo> cultivos) {
 		this.cultivos = cultivos;
 	}	
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estacion")
-	public Set<Estadistica> getEstadisticas() {
-		return this.estadisticas;
-	}
-
-	public void setEstadisticas(Set<Estadistica> estadisticas) {
-		this.estadisticas = estadisticas;
-	}
 
 }

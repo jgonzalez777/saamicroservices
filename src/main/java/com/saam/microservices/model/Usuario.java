@@ -40,9 +40,7 @@ public class Usuario {
 	@JsonView(Basico.class)
 	private String materno;
 	
-	private Set<Estacion> estacions = new HashSet<Estacion>(0);
-
-	private Set<Alertas> alertases = new HashSet<Alertas>(0);	
+	private Set<Estacion> estacions = new HashSet<Estacion>(0);		
 
 	public Usuario() {
 	}
@@ -59,7 +57,7 @@ public class Usuario {
 	}
 
 	public Usuario(String username, String password, String correo, long celular, String nombre, String paterno,
-			String materno, Set<Estacion> estacions, Set<Alertas> alertases) {
+			String materno, Set<Estacion> estacions) {
 		this.username = username;
 		this.password = password;
 		this.correo = correo;
@@ -67,8 +65,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.paterno = paterno;
 		this.materno = materno;
-		this.estacions = estacions;
-		this.alertases = alertases;		
+		this.estacions = estacions;				
 	}
 
 	@Id
@@ -153,14 +150,5 @@ public class Usuario {
 
 	public void setEstacions(Set<Estacion> estacions) {
 		this.estacions = estacions;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<Alertas> getAlertases() {
-		return this.alertases;
-	}
-
-	public void setAlertases(Set<Alertas> alertases) {
-		this.alertases = alertases;
 	}	
 }

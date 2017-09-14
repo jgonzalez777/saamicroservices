@@ -16,7 +16,7 @@ import com.saam.microservices.model.TipoCultivo;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
-@RequestMapping("/estacion")
+@RequestMapping("/saamicroservices/estacion")
 public class EstacionController {
 	
 	@Autowired

@@ -42,6 +42,12 @@ public class Cultivo {
 
 	@JsonView(Actuadores.class)
 	private Set<CatalogoActuador> catalogoActuadores = new HashSet<CatalogoActuador>(0);
+	
+	private Set<Alertas> alertases = new HashSet<Alertas>(0);
+	
+	public Cultivo(Long id){
+		this.id = id;
+	}
 
 	public Cultivo() {
 	}
@@ -52,12 +58,13 @@ public class Cultivo {
 	}
 
 	public Cultivo(TipoCultivo tipoCultivo, Estacion estacion, Set<Estadistica> estadisticas,
-			Set<CatalogoSensor> catalogoSensores, Set<CatalogoActuador> catalogoActuadores) {
+			Set<CatalogoSensor> catalogoSensores, Set<CatalogoActuador> catalogoActuadores, Set<Alertas> alertases) {
 		this.tipoCultivo = tipoCultivo;
 		this.estacion = estacion;
 		this.estadisticas = estadisticas;
 		this.catalogoSensores = catalogoSensores;
 		this.catalogoActuadores = catalogoActuadores;
+		this.alertases = alertases;
 	}
 
 	@Id
@@ -124,4 +131,13 @@ public class Cultivo {
 	public void setCatalogoActuadores(Set<CatalogoActuador> catalogoActuadores) {
 		this.catalogoActuadores = catalogoActuadores;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cultivo")
+	public Set<Alertas> getAlertases() {
+		return this.alertases;
+	}
+
+	public void setAlertases(Set<Alertas> alertases) {
+		this.alertases = alertases;
+	}	
 }

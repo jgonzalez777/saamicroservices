@@ -22,7 +22,7 @@ public class Alertas {
 
      private Long id;
      
-     private Usuario usuario;
+     private Cultivo cultivo;
      
      private boolean leido;
      
@@ -36,8 +36,8 @@ public class Alertas {
     public Alertas() {
     }
 
-    public Alertas(Usuario usuario, boolean leido, String contenido, Date fechaCreacion, Date fechaLeido) {
-       this.usuario = usuario;
+    public Alertas(Cultivo cultivo, boolean leido, String contenido, Date fechaCreacion, Date fechaLeido) {
+       this.cultivo = cultivo;
        this.leido = leido;
        this.contenido = contenido;
        this.fechaCreacion = fechaCreacion;
@@ -56,14 +56,14 @@ public class Alertas {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="usuario_id", nullable=false)
-    public Usuario getUsuario() {
-        return this.usuario;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="cultivo_id", nullable=false)
+    public Cultivo getCultivo() {
+        return this.cultivo;
     }
     
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCultivo(Cultivo cultivo) {
+        this.cultivo = cultivo;
     }
 
     
